@@ -11,6 +11,15 @@ import {
   Users,
   HelpCircle,
 } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import Link from "next/link";
 
 interface FAQItem {
   question: string;
@@ -123,12 +132,9 @@ const HelpPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-black text-white py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <HelpCircle
-            className="w-16 h-16 mx-auto mb-4"
-            style={{ color: "#75070C" }}
-          />
+      <div className="bg-primary text-white py-16 px-4">
+        <div className=" mx-auto text-center">
+          <HelpCircle className="w-16 h-16 mx-auto mb-4 text-white" />
           <h1 className="text-4xl font-bold mb-4">Pusat Bantuan</h1>
           <p className="text-gray-300 text-lg">
             Temukan jawaban untuk pertanyaan Anda
@@ -137,7 +143,7 @@ const HelpPage: React.FC = () => {
       </div>
 
       {/* Search Bar */}
-      <div className="max-w-4xl mx-auto px-4 -mt-8">
+      <div className=" mx-auto md:px-8 px-4 -mt-8">
         <div className="bg-white rounded-lg shadow-lg p-2 flex items-center">
           <Search className="w-5 h-5 text-gray-400 ml-3" />
           <input
@@ -150,8 +156,31 @@ const HelpPage: React.FC = () => {
         </div>
       </div>
 
+      <div className="mx-auto md:px-8 px-4 pt-8">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link
+                  href="/"
+                  className="text-lg font-medium text-gray-500 hover:text-gray-700"
+                >
+                  Home
+                </Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage className="text-lg font-medium text-gray-700">
+                Pusat Bantuan
+              </BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
+
       {/* Categories */}
-      <div className="max-w-4xl mx-auto px-4 mt-8">
+      <div className=" mx-auto md:px-8 px-4 mt-8">
         <div className="flex gap-2 overflow-x-auto pb-2">
           {categories.map((category) => (
             <button
@@ -174,7 +203,7 @@ const HelpPage: React.FC = () => {
       </div>
 
       {/* FAQ Accordion */}
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className=" mx-auto md:px-8 px-4 py-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
           Pertanyaan yang Sering Diajukan
         </h2>
@@ -229,7 +258,7 @@ const HelpPage: React.FC = () => {
       </div>
 
       {/* Quick Links */}
-      <div className="max-w-4xl mx-auto px-4 pb-12">
+      <div className=" mx-auto md:px-8 px-4 pb-12">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Panduan Cepat</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
@@ -263,7 +292,7 @@ const HelpPage: React.FC = () => {
 
       {/* Contact Section */}
       <div className="bg-white border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 py-12">
+        <div className=" mx-auto md:px-8 px-4 py-12">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
             Masih Butuh Bantuan?
           </h2>
