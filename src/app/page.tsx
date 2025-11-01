@@ -180,7 +180,7 @@ export default function HomePage() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#75070C] to-[#5B2E35] rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-linear-to-br from-primary to-[#5B2E35] rounded-lg flex items-center justify-center">
                 <div className="w-5 h-5 border-2 border-white rounded-sm"></div>
               </div>
               <span className="text-xl font-bold text-gray-900">SportBook</span>
@@ -190,31 +190,31 @@ export default function HomePage() {
             <div className="hidden md:flex items-center gap-8">
               <a
                 href="#"
-                className="text-gray-700 hover:text-[#75070C] transition-colors font-medium"
+                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
               >
                 Beranda
               </a>
               <a
                 href="#"
-                className="text-gray-700 hover:text-[#75070C] transition-colors font-medium"
+                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
               >
                 Lapangan
               </a>
               <a
                 href="#"
-                className="text-gray-700 hover:text-[#75070C] transition-colors font-medium"
+                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
               >
                 Promo
               </a>
               <a
                 href="#"
-                className="text-gray-700 hover:text-[#75070C] transition-colors font-medium"
+                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
               >
                 Booking Saya
               </a>
               <a
-                href="#"
-                className="text-gray-700 hover:text-[#75070C] transition-colors font-medium"
+                href="/faq"
+                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
               >
                 Bantuan
               </a>
@@ -222,10 +222,10 @@ export default function HomePage() {
 
             {/* Auth Buttons */}
             <div className="hidden md:flex items-center gap-4">
-              <button className="text-gray-700 hover:text-[#75070C] transition-colors font-medium">
+              <button className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium">
                 Masuk
               </button>
-              <button className="px-5 py-2 bg-gradient-to-r from-[#75070C] to-[#5B2E35] text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
+              <button className="px-5 py-2 bg-linear-to-r from-primary to-[#5B2E35] text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
                 Daftar Gratis
               </button>
             </div>
@@ -249,31 +249,31 @@ export default function HomePage() {
               <div className="flex flex-col gap-4">
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-[#75070C] font-medium"
+                  className="text-gray-700 hover:text-primafrom-primary font-medium"
                 >
                   Beranda
                 </a>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-[#75070C] font-medium"
+                  className="text-gray-700 hover:text-primafrom-primary font-medium"
                 >
                   Lapangan
                 </a>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-[#75070C] font-medium"
+                  className="text-gray-700 hover:text-primafrom-primary font-medium"
                 >
                   Promo
                 </a>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-[#75070C] font-medium"
+                  className="text-gray-700 hover:text-primafrom-primary font-medium"
                 >
                   Booking Saya
                 </a>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-[#75070C] font-medium"
+                  className="text-gray-700 hover:text-primafrom-primary font-medium"
                 >
                   Bantuan
                 </a>
@@ -281,7 +281,7 @@ export default function HomePage() {
                   <button className="flex-1 px-4 py-2 border border-gray-300 rounded-lg font-medium">
                     Masuk
                   </button>
-                  <button className="flex-1 px-4 py-2 bg-gradient-to-r from-[#75070C] to-[#5B2E35] text-white rounded-lg font-medium">
+                  <button className="flex-1 px-4 py-2 bg-linear-to-r from-primary to-[#5B2E35] text-white rounded-lg font-medium">
                     Daftar
                   </button>
                 </div>
@@ -292,18 +292,20 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-12 md:py-20">
+      <section className="bg-linear-to-br from-gray-50 via-white to-gray-50 py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-[#75070C]/10 px-4 py-2 rounded-full mb-4">
-              <TrendingUp className="w-4 h-4 text-[#75070C]" />
-              <span className="text-sm font-semibold text-[#75070C]">
+            <div className="inline-flex items-center gap-2 bg-primafrom-primary/10 px-4 py-2 rounded-full mb-4">
+              <TrendingUp className="w-4 h-4 text-primafrom-primary" />
+              <span className="text-sm font-semibold text-primafrom-primary">
                 Trending #1 Booking Platform
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
               Booking Lapangan Olahraga
-              <span className="block text-[#75070C]">Jadi Lebih Mudah</span>
+              <span className="block text-primafrom-primary">
+                Jadi Lebih Mudah
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Temukan dan pesan lapangan olahraga favorit Anda dengan cepat,
@@ -325,7 +327,7 @@ export default function HomePage() {
                   placeholder="Futsal, Basket, Badminton..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#75070C] focus:ring-2 focus:ring-[#75070C]/20"
+                  className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primafrom-primary focus:ring-2 focus:ring-primafrom-primary/20"
                 />
               </div>
 
@@ -338,7 +340,7 @@ export default function HomePage() {
                 <select
                   value={selectedLocation}
                   onChange={(e) => setSelectedLocation(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#75070C] focus:ring-2 focus:ring-[#75070C]/20 appearance-none bg-white"
+                  className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primafrom-primary focus:ring-2 focus:ring-primafrom-primary/20 appearance-none bg-white"
                 >
                   <option value="">Semua Lokasi</option>
                   <option value="jakarta-selatan">Jakarta Selatan</option>
@@ -359,14 +361,14 @@ export default function HomePage() {
                   type="date"
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#75070C] focus:ring-2 focus:ring-[#75070C]/20"
+                  className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primafrom-primary focus:ring-2 focus:ring-primafrom-primary/20"
                 />
               </div>
             </div>
 
             <button
               onClick={handleSearch}
-              className="w-full mt-4 py-3 bg-gradient-to-r from-[#75070C] to-[#5B2E35] text-white rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-lg"
+              className="w-full mt-4 py-3 bg-linear-to-r from-primary to-[#5B2E35] text-white rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-lg"
             >
               <Search className="w-5 h-5" />
               Cari Lapangan Sekarang
@@ -376,7 +378,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-gradient-to-r from-[#75070C] to-[#5B2E35]">
+      <section className="py-12 bg-linear-to-r from-primary to-[#5B2E35]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -409,9 +411,9 @@ export default function HomePage() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all hover:border-[#75070C]"
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all hover:border-primafrom-primary"
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-[#75070C] to-[#5B2E35] rounded-lg flex items-center justify-center text-white mb-4">
+                <div className="w-14 h-14 bg-linear-to-br from-primary to-[#5B2E35] rounded-lg flex items-center justify-center text-white mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
@@ -439,7 +441,7 @@ export default function HomePage() {
             {popularSports.map((sport) => (
               <button
                 key={sport.name}
-                className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-[#75070C] hover:shadow-lg transition-all group"
+                className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-primafrom-primary hover:shadow-lg transition-all group"
               >
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
                   {sport.icon}
@@ -473,7 +475,7 @@ export default function HomePage() {
             {promoOffers.map((promo, index) => (
               <div
                 key={index}
-                className={`bg-gradient-to-br ${promo.bgColor} rounded-xl p-6 text-white`}
+                className={`bg-linear-to-br ${promo.bgColor} rounded-xl p-6 text-white`}
               >
                 <h3 className="text-2xl font-bold mb-2">{promo.title}</h3>
                 <p className="text-white/90 mb-4">{promo.description}</p>
@@ -496,7 +498,7 @@ export default function HomePage() {
               </h2>
               <p className="text-gray-600">Dipilih oleh ribuan pengguna</p>
             </div>
-            <button className="text-[#75070C] hover:text-[#5B2E35] font-semibold flex items-center gap-1">
+            <button className="text-primafrom-primary hover:text-[#5B2E35] font-semibold flex items-center gap-1">
               Lihat Semua
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -509,11 +511,11 @@ export default function HomePage() {
                 className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100"
               >
                 {/* Image Placeholder */}
-                <div className="h-48 bg-gradient-to-br from-[#75070C] to-[#5B2E35] flex items-center justify-center text-6xl relative">
+                <div className="h-48 bg-linear-to-br from-primary to-[#5B2E35] flex items-center justify-center text-6xl relative">
                   {venue.image}
                   {venue.verified && (
                     <div className="absolute top-3 right-3 bg-white rounded-full p-1">
-                      <CheckCircle className="w-5 h-5 text-[#75070C]" />
+                      <CheckCircle className="w-5 h-5 text-primafrom-primary" />
                     </div>
                   )}
                 </div>
@@ -545,7 +547,7 @@ export default function HomePage() {
                     {venue.sports.map((sport) => (
                       <span
                         key={sport}
-                        className="px-2 py-1 bg-[#75070C]/10 text-[#75070C] text-xs rounded-full font-medium"
+                        className="px-2 py-1 bg-primafrom-primary/10 text-primafrom-primary text-xs rounded-full font-medium"
                       >
                         {sport}
                       </span>
@@ -568,11 +570,11 @@ export default function HomePage() {
                       <span className="text-xs text-gray-600 block">
                         Mulai dari
                       </span>
-                      <div className="text-lg font-bold text-[#75070C]">
+                      <div className="text-lg font-bold text-primafrom-primary">
                         Rp {venue.price.toLocaleString("id-ID")}
                       </div>
                     </div>
-                    <button className="px-4 py-2 bg-gradient-to-r from-[#75070C] to-[#5B2E35] text-white rounded-lg hover:opacity-90 transition-opacity text-sm font-semibold">
+                    <button className="px-4 py-2 bg-linear-to-r from-primary to-[#5B2E35] text-white rounded-lg hover:opacity-90 transition-opacity text-sm font-semibold">
                       Book Now
                     </button>
                   </div>
@@ -613,7 +615,7 @@ export default function HomePage() {
                   "{testimonial.comment}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#75070C] to-[#5B2E35] rounded-full flex items-center justify-center text-2xl">
+                  <div className="w-12 h-12 bg-linear-to-br from-primary to-[#5B2E35] rounded-full flex items-center justify-center text-2xl">
                     {testimonial.avatar}
                   </div>
                   <div>
@@ -632,7 +634,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-[#75070C] to-[#5B2E35]">
+      <section className="py-16 md:py-20 bg-linear-to-br from-primary to-[#5B2E35]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Siap Mulai Booking Lapangan?
@@ -641,7 +643,7 @@ export default function HomePage() {
             Bergabung dengan ribuan pengguna lainnya dan nikmati kemudahan
             booking lapangan olahraga
           </p>
-          <button className="px-8 py-4 bg-white text-[#75070C] rounded-lg font-bold text-lg hover:shadow-xl transition-all">
+          <button className="px-8 py-4 bg-white text-primafrom-primary rounded-lg font-bold text-lg hover:shadow-xl transition-all">
             Daftar Gratis Sekarang
           </button>
         </div>
@@ -653,7 +655,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
             <div className="md:col-span-2">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#75070C] to-[#5B2E35] rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-linear-to-br from-primary to-[#5B2E35] rounded-lg flex items-center justify-center">
                   <div className="w-5 h-5 border-2 border-white rounded-sm"></div>
                 </div>
                 <span className="text-xl font-bold">SportBook</span>
