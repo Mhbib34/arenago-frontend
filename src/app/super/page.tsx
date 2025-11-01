@@ -280,7 +280,7 @@ const SuperAdminDashboard = () => {
           <div className="p-6 border-b border-gray-700">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-linear-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                   <Activity className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -323,7 +323,7 @@ const SuperAdminDashboard = () => {
                 }}
                 className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                   currentPage === item.id
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
+                    ? "bg-linear-to-r from-blue-500 to-purple-600 text-white shadow-lg"
                     : `${
                         darkMode
                           ? "text-gray-300 hover:bg-gray-700"
@@ -405,7 +405,7 @@ const SuperAdminDashboard = () => {
                 } transition-colors duration-200`}
               >
                 {/* Avatar */}
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
+                <div className="w-9 h-9 rounded-full bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
                   {currentUser.fullName
                     .split(" ")
                     .map((n) => n[0])
@@ -475,7 +475,7 @@ const SuperAdminDashboard = () => {
                       >
                         {currentUser.email}
                       </p>
-                      <span className="inline-block mt-2 px-2 py-1 text-xs font-semibold bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full">
+                      <span className="inline-block mt-2 px-2 py-1 text-xs font-semibold bg-linear-to-r from-blue-500 to-purple-600 text-white rounded-full">
                         {currentUser.role}
                       </span>
                     </div>
@@ -539,28 +539,28 @@ const SuperAdminDashboard = () => {
           title="Total Tenants"
           value={stats.totalTenants}
           subtitle={`+${stats.growthRate}%`}
-          color="bg-gradient-to-br from-blue-500 to-blue-600"
+          color="bg-linear-to-br from-blue-500 to-blue-600"
         />
         <StatCard
           icon={Grid}
           title="Total Fields"
           value={stats.totalFields}
           subtitle={`+${(stats.growthRate * 1.2).toFixed(1)}%`}
-          color="bg-gradient-to-br from-purple-500 to-purple-600"
+          color="bg-linear-to-br from-purple-500 to-purple-600"
         />
         <StatCard
           icon={Calendar}
           title="Active Bookings"
           value={stats.activeBookings}
           subtitle="This month"
-          color="bg-gradient-to-br from-green-500 to-green-600"
+          color="bg-linear-to-br from-green-500 to-green-600"
         />
         <StatCard
           icon={DollarSign}
           title="Monthly Revenue"
           value={formatCurrency(stats.monthlyRevenue)}
           subtitle={`+${(stats.growthRate * 0.8).toFixed(1)}%`}
-          color="bg-gradient-to-br from-orange-500 to-orange-600"
+          color="bg-linear-to-br from-orange-500 to-orange-600"
         />
       </div>
 
@@ -846,7 +846,7 @@ const SuperAdminDashboard = () => {
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
             </select>
-            <button className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all">
+            <button className="px-4 py-2 bg-linear-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all">
               <Plus className="w-5 h-5" />
             </button>
           </div>
@@ -1137,7 +1137,7 @@ const SuperAdminDashboard = () => {
               <option value="tenant_admin">Tenant Admin</option>
               <option value="super_admin">Super Admin</option>
             </select>
-            <button className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all">
+            <button className="px-4 py-2 bg-linear-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all">
               <Plus className="w-5 h-5" />
             </button>
           </div>
@@ -1235,7 +1235,7 @@ const SuperAdminDashboard = () => {
                 }`}
               />
             </div>
-            <button className="w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all">
+            <button className="w-full px-4 py-2 bg-linear-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all">
               Update Profile
             </button>
           </div>
@@ -1311,7 +1311,7 @@ const SuperAdminDashboard = () => {
                 }`}
               />
             </div>
-            <button className="w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all">
+            <button className="w-full px-4 py-2 bg-linear-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all">
               Change Password
             </button>
           </div>
