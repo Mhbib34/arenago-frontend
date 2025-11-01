@@ -19,6 +19,7 @@ import {
   Phone,
   Mail,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -183,51 +184,57 @@ export default function HomePage() {
               <div className="w-10 h-10 bg-linear-to-br from-primary to-[#5B2E35] rounded-lg flex items-center justify-center">
                 <div className="w-5 h-5 border-2 border-white rounded-sm"></div>
               </div>
-              <span className="text-xl font-bold text-gray-900">SportBook</span>
+              <span className="text-xl font-bold text-gray-900">ArenaGo</span>
             </div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
-              <a
+              <Link
                 href="#"
                 className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
               >
                 Beranda
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
               >
                 Lapangan
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
               >
                 Promo
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/bookings"
                 className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
               >
                 Booking Saya
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/faq"
                 className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
               >
                 Bantuan
-              </a>
+              </Link>
             </div>
 
             {/* Auth Buttons */}
             <div className="hidden md:flex items-center gap-4">
-              <button className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium">
+              <Link
+                href="/login"
+                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
+              >
                 Masuk
-              </button>
-              <button className="px-5 py-2 bg-linear-to-r from-primary to-[#5B2E35] text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
+              </Link>
+              <Link
+                href="/register"
+                className="px-5 py-2 bg-linear-to-r from-primary to-[#5B2E35] text-white rounded-lg hover:opacity-90 transition-opacity font-medium"
+              >
                 Daftar Gratis
-              </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -247,43 +254,49 @@ export default function HomePage() {
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t border-gray-200">
               <div className="flex flex-col gap-4">
-                <a
+                <Link
                   href="#"
                   className="text-gray-700 hover:text-primafrom-primary font-medium"
                 >
                   Beranda
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-700 hover:text-primafrom-primary font-medium"
                 >
                   Lapangan
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-700 hover:text-primafrom-primary font-medium"
                 >
                   Promo
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-700 hover:text-primafrom-primary font-medium"
                 >
                   Booking Saya
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-700 hover:text-primafrom-primary font-medium"
                 >
                   Bantuan
-                </a>
+                </Link>
                 <div className="flex gap-2 pt-2">
-                  <button className="flex-1 px-4 py-2 border border-gray-300 rounded-lg font-medium">
+                  <Link
+                    href="/login"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg font-medium"
+                  >
                     Masuk
-                  </button>
-                  <button className="flex-1 px-4 py-2 bg-linear-to-r from-primary to-[#5B2E35] text-white rounded-lg font-medium">
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="flex-1 px-4 py-2 bg-linear-to-r from-primary to-[#5B2E35] text-white rounded-lg font-medium"
+                  >
                     Daftar
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -315,7 +328,7 @@ export default function HomePage() {
 
           {/* Search Box */}
           <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-4 md:p-6 border border-gray-100">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Sport/Venue Search */}
               <div className="relative">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -349,20 +362,6 @@ export default function HomePage() {
                   <option value="jakarta-timur">Jakarta Timur</option>
                   <option value="jakarta-utara">Jakarta Utara</option>
                 </select>
-              </div>
-
-              {/* Date */}
-              <div className="relative">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Tanggal Main
-                </label>
-                <Calendar className="absolute left-3 bottom-3 text-gray-400 w-5 h-5" />
-                <input
-                  type="date"
-                  value={selectedDate}
-                  onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primafrom-primary focus:ring-2 focus:ring-primafrom-primary/20"
-                />
               </div>
             </div>
 
@@ -612,7 +611,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <p className="text-gray-700 mb-4 italic">
-                  "{testimonial.comment}"
+                  {testimonial.comment}
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-linear-to-br from-primary to-[#5B2E35] rounded-full flex items-center justify-center text-2xl">
