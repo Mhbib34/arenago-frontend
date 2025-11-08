@@ -16,11 +16,12 @@ const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const userMenuRef = useRef<HTMLDivElement | null>(null);
   const mobileMenuRef = useRef<HTMLButtonElement | null>(null);
 
-  // ✅ Tutup menu ketika klik di luar
+  // Tutup menu ketika klik di luar
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -29,7 +30,6 @@ const Header = () => {
       ) {
         setIsUserMenuOpen(false);
       }
-
       if (
         mobileMenuRef.current &&
         !mobileMenuRef.current.contains(e.target as Node)
@@ -42,8 +42,26 @@ const Header = () => {
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
 
+  // Detect scroll untuk ubah background
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <header
+      className={`fixed w-full top-0 z-50 shadow-sm transition-colors duration-300 ${
+        scrolled ? "bg-white" : "bg-transparent backdrop-blur-lg"
+      }`}
+    >
       <nav>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -52,12 +70,18 @@ const Header = () => {
               <div className="w-10 h-10 bg-linear-to-br from-primary to-[#5B2E35] rounded-lg flex items-center justify-center">
                 <div className="w-5 h-5 border-2 border-white rounded-sm"></div>
               </div>
-              <span className="text-xl font-bold text-gray-900">ArenaGo</span>
+              <span
+                className={`text-xl font-bold ${
+                  scrolled ? "text-gray-900" : "text-white"
+                }`}
+              >
+                ArenaGo
+              </span>
             </div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
-              <Menu />
+              <Menu className={scrolled ? "text-gray-900" : "text-white"} />
             </div>
 
             {/* Auth Buttons / User Menu */}
@@ -66,6 +90,11 @@ const Header = () => {
               isUserMenuOpen={isUserMenuOpen}
               setIsUserMenuOpen={setIsUserMenuOpen}
               userMenuRef={userMenuRef}
+              className={
+                scrolled
+                  ? "text-gray-900"
+                  : "text-white group-hover:text-gray-900"
+              }
             />
 
             {/* Mobile Menu Button */}
@@ -76,7 +105,7 @@ const Header = () => {
             />
           </div>
 
-          {/* ✅ Mobile Menu */}
+          {/* Mobile Menu */}
           {isMenuOpen && (
             <MobileMenu setIsMenuOpen={setIsMenuOpen} user={user} />
           )}
