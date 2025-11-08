@@ -132,7 +132,29 @@ const HelpPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-primary text-white py-16 px-4">
+      <div className="bg-primary text-white pb-16 px-4">
+        <div className="pb-16 pt-4">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link
+                    href="/"
+                    className="text-lg font-medium text-white/70 hover:text-white"
+                  >
+                    Home
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage className="text-lg font-medium text-white">
+                  Pusat Bantuan
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
         <div className=" mx-auto text-center">
           <HelpCircle className="w-16 h-16 mx-auto mb-4 text-white" />
           <h1 className="text-4xl font-bold mb-4">Pusat Bantuan</h1>
@@ -154,29 +176,6 @@ const HelpPage: React.FC = () => {
             className="flex-1 px-4 py-3 outline-none text-gray-700"
           />
         </div>
-      </div>
-
-      <div className="mx-auto md:px-8 px-4 pt-8">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link
-                  href="/"
-                  className="text-lg font-medium text-gray-500 hover:text-gray-700"
-                >
-                  Home
-                </Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="text-lg font-medium text-gray-700">
-                Pusat Bantuan
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
       </div>
 
       {/* Categories */}
@@ -211,11 +210,11 @@ const HelpPage: React.FC = () => {
           {filteredFaqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-sm overflow-hidden transition-all hover:shadow-md"
+              className="bg-white rounded-lg shadow-sm overflow-hidden transition-all hover:shadow-md "
             >
               <button
                 onClick={() => toggleAccordion(index)}
-                className="w-full px-6 py-4 text-left flex justify-between items-center"
+                className="w-full px-6 py-4 text-left flex justify-between items-center cursor-pointer"
               >
                 <div className="flex-1">
                   <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-100 text-gray-600 mr-3">

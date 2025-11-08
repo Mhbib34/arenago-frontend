@@ -40,7 +40,7 @@ axiosInstance.interceptors.response.use(
       error.response?.status === 401 &&
       !originalRequest._retry &&
       !originalRequest.url?.includes("/auth/login") &&
-      !originalRequest.url?.includes("/users/profile")
+      !originalRequest.url?.includes("/profile")
     ) {
       if (isRefreshing) {
         return new Promise<AxiosResponse>((resolve, reject) => {

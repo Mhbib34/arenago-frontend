@@ -1,13 +1,50 @@
-import { Menu, X } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
+import { useAuthStore } from "@/store/auth-store";
+import { useEffect, useRef, useState } from "react";
+import { useShallow } from "zustand/shallow";
+import MobileMenuButton from "../fragments/MobileMenuButton";
+import MobileMenu from "../fragments/MobileMenu";
+import DekstopAuthButton from "../fragments/DekstopAuthButton";
+import Menu from "../fragments/Menu";
 
 const Header = () => {
+  const { user } = useAuthStore(
+    useShallow((state) => ({
+      user: state.user,
+      logout: state.logout,
+    }))
+  );
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
+  const userMenuRef = useRef<HTMLDivElement | null>(null);
+  const mobileMenuRef = useRef<HTMLButtonElement | null>(null);
+
+  // ✅ Tutup menu ketika klik di luar
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        userMenuRef.current &&
+        !userMenuRef.current.contains(e.target as Node)
+      ) {
+        setIsUserMenuOpen(false);
+      }
+
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(e.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("click", handleClickOutside);
+    return () => window.removeEventListener("click", handleClickOutside);
+  }, []);
 
   return (
-    <header>
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <nav>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -20,117 +57,28 @@ const Header = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
-              <Link
-                href="#"
-                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
-              >
-                Beranda
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
-              >
-                Lapangan
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
-              >
-                Promo
-              </Link>
-              <Link
-                href="/bookings"
-                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
-              >
-                Booking Saya
-              </Link>
-              <Link
-                href="/faq"
-                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
-              >
-                Bantuan
-              </Link>
+              <Menu />
             </div>
 
-            {/* Auth Buttons */}
-            <div className="hidden md:flex items-center gap-4">
-              <Link
-                href="/login"
-                className="text-gray-700 hover:text-primafrom-primary transition-colors font-medium"
-              >
-                Masuk
-              </Link>
-              <Link
-                href="/register"
-                className="px-5 py-2 bg-linear-to-r from-primary to-[#5B2E35] text-white rounded-lg hover:opacity-90 transition-opacity font-medium"
-              >
-                Daftar Gratis
-              </Link>
-            </div>
+            {/* Auth Buttons / User Menu */}
+            <DekstopAuthButton
+              user={user}
+              isUserMenuOpen={isUserMenuOpen}
+              setIsUserMenuOpen={setIsUserMenuOpen}
+              userMenuRef={userMenuRef}
+            />
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-gray-700"
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+            <MobileMenuButton
+              isMenuOpen={isMenuOpen}
+              setIsMenuOpen={setIsMenuOpen}
+              mobileMenuRef={mobileMenuRef}
+            />
           </div>
 
-          {/* Mobile Menu */}
+          {/* ✅ Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-200">
-              <div className="flex flex-col gap-4">
-                <Link
-                  href="#"
-                  className="text-gray-700 hover:text-primafrom-primary font-medium"
-                >
-                  Beranda
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-700 hover:text-primafrom-primary font-medium"
-                >
-                  Lapangan
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-700 hover:text-primafrom-primary font-medium"
-                >
-                  Promo
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-700 hover:text-primafrom-primary font-medium"
-                >
-                  Booking Saya
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-700 hover:text-primafrom-primary font-medium"
-                >
-                  Bantuan
-                </Link>
-                <div className="flex gap-2 pt-2">
-                  <Link
-                    href="/login"
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg font-medium"
-                  >
-                    Masuk
-                  </Link>
-                  <Link
-                    href="/register"
-                    className="flex-1 px-4 py-2 bg-linear-to-r from-primary to-[#5B2E35] text-white rounded-lg font-medium"
-                  >
-                    Daftar
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <MobileMenu setIsMenuOpen={setIsMenuOpen} user={user} />
           )}
         </div>
       </nav>

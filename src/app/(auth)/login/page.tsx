@@ -5,7 +5,6 @@ import { Mail, Lock } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axiosInstance";
 import Input from "@/components/fragments/Input";
-import Message from "../components/Message";
 import { useRouter } from "next/navigation";
 import ButtonGoogleAuth from "../components/ButtonGoogleAuth";
 import Divider from "../components/Divider";
@@ -13,6 +12,7 @@ import SubmitButton from "../components/SubmitButton";
 import AuthRedirectText from "../components/AuthRedirectText";
 import { motion } from "framer-motion";
 import Form from "../components/Form";
+import { useFetchUser } from "@/store/auth-store";
 
 interface LoginErrors {
   identifier?: string;
@@ -30,6 +30,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<LoginErrors>({});
   const [message, setMessage] = useState({ type: "", text: "" });
+  const { refetch: refetchUser } = useFetchUser();
 
   const mutation = useMutation({
     mutationFn: async (data: typeof loginForm) => {
@@ -39,9 +40,10 @@ export default function LoginPage() {
     onSuccess: (data) => {
       setMessage({ type: "success", text: "Login berhasil!" });
       setLoginForm({ identifier: "", password: "" });
-      queryClient.invalidateQueries({ queryKey: ["users"] });
-      console.log("Login success:", data);
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      refetchUser();
 
+      console.log("Login success:", data);
       if (data.data.role === "super_admin") {
         router.push("/super");
       } else if (data.data.role === "tenant_admin") {

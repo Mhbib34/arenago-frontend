@@ -11,7 +11,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-linear-to-br from-primary to-[#5B2E35] rounded-lg flex items-center justify-center">
                 <div className="w-5 h-5 border-2 border-white rounded-sm"></div>
               </div>
-              <span className="text-xl font-bold">SportBook</span>
+              <span className="text-xl font-bold">ArenaGo</span>
             </div>
             <p className="text-gray-400 text-sm mb-4">
               Platform booking lapangan olahraga #1 di Indonesia. Mudah, cepat,
@@ -95,7 +95,10 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Bantuan</h3>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/faq"
+                  className="hover:text-white transition-colors"
+                >
                   FAQ
                 </Link>
               </li>
@@ -121,7 +124,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm text-center md:text-left">
-              &copy; 2024 SportBook. All rights reserved.
+              &copy; {new Date().getFullYear()} SportBook. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-gray-400 text-sm">
               <Link href="#" className="hover:text-white transition-colors">
