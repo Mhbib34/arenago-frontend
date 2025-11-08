@@ -9,10 +9,26 @@ import FeaturedVenuesSection from "./(main)/components/layout/FeaturedVenuesSect
 import TestiSection from "./(main)/components/layout/TestiSection";
 import CtaSection from "./(main)/components/layout/CtaSection";
 import Footer from "./(main)/components/layout/Footer";
+import { useShallow } from "zustand/shallow";
+import { useAuthStore } from "@/store/auth-store";
+import LoadingPage from "@/components/fragments/LoadingPage";
+import TenantPromotionModal from "@/components/modal/TenantModalPromotion";
 
 export default function HomePage() {
+  const { loading } = useAuthStore(
+    useShallow((state) => {
+      return {
+        loading: state.loading,
+      };
+    })
+  );
+
+  if (loading) return <LoadingPage />;
+
   return (
     <div className="min-h-screen bg-white">
+      <TenantPromotionModal />
+
       {/* Navigation */}
       <Header />
 

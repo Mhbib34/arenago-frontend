@@ -6,7 +6,6 @@ import Input from "@/components/fragments/Input";
 import ButtonGoogleAuth from "../components/ButtonGoogleAuth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axiosInstance";
-import Message from "../components/Message";
 import Divider from "../components/Divider";
 import SubmitButton from "../components/SubmitButton";
 import AuthRedirectText from "../components/AuthRedirectText";
@@ -18,7 +17,6 @@ interface RegisterErrors {
   email?: string;
   phone?: string;
   password?: string;
-  confirmPassword?: string;
 }
 
 export default function RegisterPage() {
@@ -29,10 +27,8 @@ export default function RegisterPage() {
     email: "",
     phone: "",
     password: "",
-    confirmPassword: "",
   });
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [errors, setErrors] = useState<RegisterErrors>({});
   const [message, setMessage] = useState({ type: "", text: "" });
@@ -49,7 +45,6 @@ export default function RegisterPage() {
         email: "",
         phone: "",
         password: "",
-        confirmPassword: "",
       });
       queryClient.invalidateQueries({ queryKey: ["users"] });
       console.log("Register success:", data);
@@ -91,20 +86,10 @@ export default function RegisterPage() {
       newErrors.phone = "Nomor telepon wajib diisi.";
     }
 
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Konfirmasi password wajib diisi.";
-    }
-
     if (!formData.password) {
       newErrors.password = "Password wajib diisi.";
     } else if (formData.password.length < 6) {
       newErrors.password = "Password minimal 6 karakter.";
-      newErrors.confirmPassword = "Password minimal 6 karakter.";
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword =
-        "Password dan konfirmasi password tidak cocok.";
     }
 
     setErrors(newErrors);
@@ -225,23 +210,6 @@ export default function RegisterPage() {
                 showPasswordToggle={true}
                 showPassword={showPassword}
                 onTogglePassword={() => setShowPassword(!showPassword)}
-                disabled={mutation.isPending}
-              />
-
-              {/* Confirm Password Input */}
-              <Input
-                placeholder="********"
-                value={formData.confirmPassword}
-                onChange={(e) =>
-                  handleRegisterChange("confirmPassword", e.target.value)
-                }
-                Icon={Lock}
-                error={errors.confirmPassword}
-                showPasswordToggle={true}
-                showPassword={showConfirmPassword}
-                onTogglePassword={() =>
-                  setShowConfirmPassword(!showConfirmPassword)
-                }
                 disabled={mutation.isPending}
               />
 

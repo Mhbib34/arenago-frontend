@@ -12,7 +12,6 @@ import {
   AlertCircle,
   Download,
   Eye,
-  SlashIcon,
 } from "lucide-react";
 import {
   Breadcrumb,
@@ -190,38 +189,37 @@ const BookingHistoryPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-primary text-white py-8 ">
+      <div className="bg-primary text-white pb-8 ">
+        <div className="mx-auto md:px-8 px-4 pt-4 pb-16">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link
+                    href="/"
+                    className="text-lg font-medium text-white/70 hover:text-white"
+                  >
+                    Home
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage className="text-lg font-medium text-white">
+                  Riwayat Booking
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
         <div className="mx-auto md:px-8 px-4">
-          <h1 className="text-3xl font-bold mb-2 md:text-center">
+          <h1 className="text-3xl font-bold mb-2 text-center">
             Riwayat Booking
           </h1>
-          <p className="text-gray-300 md:text-center">
+          <p className="text-gray-300 text-center">
             Kelola dan lihat semua riwayat booking Anda
           </p>
         </div>
-      </div>
-
-      <div className="mx-auto md:px-8 px-4 pt-8">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link
-                  href="/"
-                  className="text-lg font-medium text-gray-500 hover:text-gray-700"
-                >
-                  Home
-                </Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="text-lg font-medium text-gray-700">
-                Riwayat Booking
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
       </div>
 
       <div className=" mx-auto md:px-8 px-4 py-8">
@@ -262,6 +260,7 @@ const BookingHistoryPage: React.FC = () => {
             ].map((tab) => (
               <button
                 key={tab.key}
+                //eslint-disable-next-line
                 onClick={() => setActiveTab(tab.key as any)}
                 className={`flex-1 min-w-max px-6 py-4 text-sm font-medium transition-colors ${
                   activeTab === tab.key
