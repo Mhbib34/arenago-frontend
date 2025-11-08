@@ -7,6 +7,7 @@ type DekstopAuthButtonProps = {
   isUserMenuOpen: boolean;
   setIsUserMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   userMenuRef: React.RefObject<HTMLDivElement | null>;
+  className?: string;
 };
 
 const DekstopAuthButton = ({
@@ -14,6 +15,7 @@ const DekstopAuthButton = ({
   isUserMenuOpen,
   setIsUserMenuOpen,
   userMenuRef,
+  className,
 }: DekstopAuthButtonProps) => {
   return (
     <div className="hidden md:flex items-center gap-4" ref={userMenuRef}>
@@ -24,12 +26,12 @@ const DekstopAuthButton = ({
               e.stopPropagation();
               setIsUserMenuOpen(!isUserMenuOpen);
             }}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+            className="group flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
           >
             <div className="w-8 h-8 bg-linear-to-br from-primary to-[#5B2E35] rounded-full flex items-center justify-center text-white font-semibold">
               {user.full_name?.charAt(0).toUpperCase() || "U"}
             </div>
-            <span className="font-medium text-gray-900">{user.full_name}</span>
+            <span className={`font-medium ${className}`}>{user.full_name}</span>
           </button>
 
           {isUserMenuOpen && (
